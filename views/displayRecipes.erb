@@ -1,0 +1,48 @@
+<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">Pâtisserie</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="muffins">MUFFINS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cookies">COOKIES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cakes">CAKES</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+    <% @@data.each do |item| %>
+        <div class="col-sm-4">
+            <div class="card">
+            <img class="card-img-top img-fluid" src=<%= item["recipe"]["image"] %> alt="Cookie">
+                <div class="card-block">
+                    <h4 class="card-title"><%= item["recipe"]["label"]%></h4>
+                    <p id="ingredients">Ingredients</p>
+
+                    
+                        <div class="ex1">
+                        <% item["recipe"]["ingredientLines"].each do |ing| %>
+                            <li><%= ing %></li>
+                            <% end %>
+                        </div>
+                   
+                </div>
+                <a target="_blank" href="<%=item["recipe"]["url"]%>" class="btn">Find out full recipe <i class="fa fa-question-circle"></i></a>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>   
